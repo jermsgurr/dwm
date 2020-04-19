@@ -11,6 +11,7 @@ while true; do
 	done &
 	while true; do
 
+	BAT="$(acpi -b | awk '{ print $4 " " $5 }' | tr -d ',')"
 	LOCALTIME=$(< /tmp/CurTime.tmp)
 	DISKFREE=$(df -Ph | grep "/dev/sda5" | awk {'print $4'})
 	DISKUSED=$(df -Ph | grep "/dev/sda5" | awk {'print $3'})
